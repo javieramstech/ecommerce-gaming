@@ -1,6 +1,18 @@
-import os
-from typing import List
-from pydantic_settings import BaseSettings, SettingsConfigDict
+def get_default_db_url() -> str:
+    backend_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    default_db = os.path.join(backend_dir, "jmshop.db")
+    
+    # En entorno Vercel Serverless Function, copiar DB a /tmp para soporte de lectura/escritura
+    if os.getenv("VERCEL") or os.getenv("LAMBDA_TASK_ROOT"):
+        tmp_db = "/tmp/jmshop.db"
+        if not os.path.exists(tmp_db) and os.path.exists(default_db):
+            try:
+                shutil.copyfile(default_db, tmp_db)
+            except Exception:
+                pass
+        return f"sqlite:///{tmp_db}"
+    
+    return f"sqlite:///{default_db.replace('\\', '/')}"
 
 
 class Settings(BaseSettings):
@@ -17,8 +29,8 @@ class Settings(BaseSettings):
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24  # 24 Horas
     
-    # Base de Datos SQLite 3 (Ruta Absoluta para evitar discrepancias por directorio de trabajo)
-    DATABASE_URL: str = f"sqlite:///{os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'jmshop.db').replace('\\', '/')}"
+    # Base de Datos SQLite 3
+    DATABASE_URL: str = get_default_db_url()
     
     # Middleware CORS: Permitir Host Local (desarrollo frontend)
     BACKEND_CORS_ORIGINS: List[str] = [

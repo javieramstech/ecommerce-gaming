@@ -15,6 +15,7 @@ __pycache__/
 
 # Databases
 *.db
+!backend/jmshop.db
 *.sqlite3
 
 # OS generated
