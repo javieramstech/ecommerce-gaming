@@ -1,3 +1,9 @@
+import os
+import shutil
+from typing import List
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
 def get_default_db_url() -> str:
     backend_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     default_db = os.path.join(backend_dir, "jmshop.db")

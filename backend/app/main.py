@@ -1,3 +1,14 @@
+import os
+import sys
+
+# Asegurar que el directorio backend y sus submódulos estén siempre en sys.path
+_current_file_dir = os.path.dirname(os.path.abspath(__file__))
+_backend_dir = os.path.dirname(_current_file_dir)
+_root_dir = os.path.dirname(_backend_dir)
+for _d in [_backend_dir, _root_dir]:
+    if _d not in sys.path:
+        sys.path.insert(0, _d)
+
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request, Response
 from app.core.config import settings
