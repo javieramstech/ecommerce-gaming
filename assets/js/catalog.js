@@ -4,7 +4,16 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    const API_BASE_URL = 'http://127.0.0.1:8000/api/v1';
+    const getApiBaseUrl = () => {
+        const host = window.location.hostname;
+        if (host === 'localhost' || host === '127.0.0.1' || window.location.protocol === 'file:') {
+            return 'http://127.0.0.1:8000/api/v1';
+        }
+        return window.location.origin.includes('vercel.app')
+            ? '/api/v1'
+            : 'https://backend-zolab1.vercel.app/api/v1';
+    };
+    const API_BASE_URL = getApiBaseUrl();
 
     // State Variables
     let activeType = 'all';

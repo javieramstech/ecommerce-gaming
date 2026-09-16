@@ -44,7 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function loadBuilderDataFromAPI() {
         try {
-            const res = await fetch('http://127.0.0.1:8000/api/v1/products?limit=100');
+            const host = window.location.hostname;
+            const apiUrl = (host === 'localhost' || host === '127.0.0.1' || window.location.protocol === 'file:')
+                ? 'http://127.0.0.1:8000/api/v1/products?limit=100'
+                : (window.location.origin.includes('vercel.app') ? '/api/v1/products?limit=100' : 'https://backend-zolab1.vercel.app/api/v1/products?limit=100');
+            const res = await fetch(apiUrl);
             if (!res.ok) return;
             const items = await res.json();
             if (!Array.isArray(items) || items.length === 0) return;
