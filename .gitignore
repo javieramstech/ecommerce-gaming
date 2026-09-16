@@ -1,3 +1,6 @@
+# Agents & internal skills
+.agents/skills/
+
 # Environment & IDE
 .venv/
 env/
