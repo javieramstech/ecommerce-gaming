@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JMSHOP - Crimson Cyberpunk Ecommerce Gaming | Hardware, Laptops & Armado de PC</title>
+    <meta name="description" content="JMSHOP es la tienda e-commerce gaming definitiva: componentes de hardware, notebooks de alto rendimiento, licencias de software y armado profesional de PC.">
+
+    <!-- TailwindCSS v3 (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#050505',
+                        surface: '#0d0d10',
+                        crimson: '#ff003c',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Estilos Complementarios Crimson Techno-Minimalist -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="bg-[#050505] text-slate-100 min-h-screen flex flex-col selection:bg-rose-600 selection:text-white font-sans bg-cyber-grid">
+
+    <!-- ========================================== -->
+    <!-- 1. BARRA DE NAVEGACIÓN UNIFICADA (NAVBAR)  -->
+    <!-- ========================================== -->
+    <header class="sticky top-0 z-40 w-full backdrop-blur-xl bg-[#050505]/90 border-b border-rose-950/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+
+                <!-- Logotipo -->
+                <a href="index.html" class="flex items-center gap-3 group focus:outline-none">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-600 via-red-500 to-amber-500 flex items-center justify-center shadow-lg shadow-rose-600/30 group-hover:scale-105 transition-transform">
+                        <svg class="w-6 h-6 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-black tracking-wider bg-gradient-to-r from-white via-slate-100 to-rose-500 bg-clip-text text-transparent font-tech-title">
+                            JMSHOP
+                        </span>
+                        <span class="text-[9px] uppercase font-bold tracking-[0.25em] text-rose-500 -mt-1">
+                            Crimson Tech
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Navegación de Escritorio Unificada (5 Enlaces) -->
+                <nav class="hidden md:flex items-center gap-8 text-sm font-semibold" aria-label="Navegación principal">
+                    <a href="index.html" class="text-rose-500 border-b-2 border-rose-500 pb-1">Inicio</a>
+                    <a href="catalogo.html" class="text-slate-300 hover:text-rose-500 transition-colors">Catálogo</a>
+                    <a href="builder.html" class="text-slate-300 hover:text-rose-500 transition-colors">Arma tu PC</a>
+                    <a href="#servicios" class="text-slate-300 hover:text-rose-500 transition-colors">Servicios</a>
+                    <a href="#contacto" class="text-slate-300 hover:text-rose-500 transition-colors">Contacto</a>
+                </nav>
+
+                <!-- Botones de Acción -->
+                <div class="flex items-center gap-3">
+                    <button id="theme-toggle" type="button" aria-label="Cambiar tema claro u oscuro" class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-rose-500/50 transition-all">
+                        <svg id="theme-icon-light" class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                        <svg id="theme-icon-dark" class="w-5 h-5 text-slate-400 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                    </button>
+
+                    <button type="button" class="open-cart-btn relative p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-200 hover:text-rose-500 hover:border-rose-500/50 transition-all flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                        <span class="hidden sm:inline text-xs font-bold">Carrito</span>
+                        <span class="cart-badge-count hidden absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-rose-600 text-white text-[10px] font-extrabold flex items-center justify-center shadow-lg">0</span>
+                    </button>
+
+                    <button id="mobile-menu-btn" type="button" aria-label="Abrir menú" class="md:hidden p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 py-4 px-2 space-y-3">
+                <a href="index.html" class="block px-4 py-2.5 rounded-xl text-rose-500 bg-slate-900 font-semibold">Inicio</a>
+                <a href="catalogo.html" class="block px-4 py-2.5 rounded-xl text-slate-300 hover:bg-slate-900 hover:text-rose-500 font-medium">Catálogo</a>
+                <a href="builder.html" class="block px-4 py-2.5 rounded-xl text-slate-300 hover:bg-slate-900 hover:text-rose-500 font-medium">Arma tu PC</a>
+                <a href="#servicios" class="block px-4 py-2.5 rounded-xl text-slate-300 hover:bg-slate-900 hover:text-rose-500 font-medium">Servicios</a>
+                <a href="#contacto" class="block px-4 py-2.5 rounded-xl text-slate-300 hover:bg-slate-900 hover:text-rose-500 font-medium">Contacto</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- ========================================== -->
+        <!-- 2. HERO ASIMÉTRICO CRIMSON TECHNO-MINIMALIST -->
+        <!-- ========================================== -->
+        <section id="hero-section" class="relative py-16 lg:py-24 overflow-hidden bg-[#050505]">
+            <!-- Red Ambient Floating Orbs -->
+            <div class="hero-orb-1"></div>
+            <div class="hero-orb-2"></div>
+            <div class="absolute inset-0 bg-cyber-grid opacity-30 pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- COLUMNA IZQUIERDA: MENSAJE & CTA -->
+                    <div class="lg:col-span-7 space-y-8 text-left">
+                        <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#0d0d11] border border-rose-500/40 text-rose-400 text-xs font-bold tracking-wider backdrop-blur-md shadow-lg shadow-rose-950/40">
+                            <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping"></span>
+                            CRIMSON TECH ARCHITECTURE // JMSHOP ONLINE
+                        </div>
+
+                        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.05] font-tech-title">
+                            NEXT-GEN HARDWARE & <br>
+                            <span class="bg-gradient-to-r from-red-500 via-rose-500 to-amber-500 bg-clip-text text-transparent glow-text-crimson">
+                                CRIMSON PERFORMANCE
+                            </span>
+                        </h1>
+
+                        <p class="text-base sm:text-lg text-zinc-400 max-w-xl leading-relaxed font-normal">
+                            Ingeniería de vanguardia en componentes de hardware, notebooks entusiastas y taller de ensamble profesional con prueba de estrés garantizada de 2 horas.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+                            <a href="catalogo.html" class="px-8 py-4 rounded-2xl bg-rose-600 hover:bg-rose-500 text-white font-extrabold text-base transition-all shadow-xl shadow-rose-600/30 glow-crimson text-center flex items-center justify-center gap-2">
+                                <span>VER CATÁLOGO COMPLETO</span>
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                            </a>
+                            <a href="builder.html" class="px-8 py-4 rounded-2xl bg-[#0d0d11] hover:bg-zinc-900 border border-rose-500/40 text-rose-400 font-bold text-base transition-all text-center flex items-center justify-center gap-2">
+                                <span>🛠️ ARMA TU PC GAMER</span>
+                            </a>
+                        </div>
+
+                        <!-- Mini stats bar -->
+                        <div class="pt-6 border-t border-zinc-900 flex items-center gap-8 text-xs text-zinc-400 font-medium">
+                            <div class="flex items-center gap-2">
+                                <span class="text-rose-500 font-bold">⚡ 100%</span>
+                                <span>Garantía Oficial</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-rose-500 font-bold">🚀 24/48h</span>
+                                <span>Despacho Rápido</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-rose-500 font-bold">🛡️ BIOS</span>
+                                <span>Update Gratis</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- COLUMNA DERECHA: PANEL SHOWCASE 3D INTERACTIVO -->
+                    <div class="lg:col-span-5">
+                        <div id="hero-hardware-card" class="relative rounded-3xl bg-[#0d0d11]/90 border border-rose-500/40 p-6 sm:p-8 backdrop-blur-2xl shadow-2xl shadow-rose-950/40 overflow-hidden group">
+                            
+                            <!-- Scanner Line Animation -->
+                            <div class="animate-laser-scan"></div>
+
+                            <!-- HUD Top Header -->
+                            <div class="flex items-center justify-between pb-6 border-b border-zinc-800/80">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-3 h-3 rounded-full bg-rose-500 animate-pulse"></div>
+                                    <span class="text-xs font-mono font-bold text-rose-400 tracking-wider uppercase">JMS-HUD v3.0 // ACTIVE MATRIX</span>
+                                </div>
+                                <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-[#050505] text-rose-400 border border-rose-500/30">REALTIME FPS</span>
+                            </div>
+
+                            <!-- Interactive Performance Dynamic Visualizer Grid -->
+                            <div class="my-6 grid grid-cols-2 gap-4">
+                                <div class="p-5 rounded-2xl bg-[#050505] border border-zinc-800/80 hover:border-rose-500/50 transition-all duration-300 relative overflow-hidden group/item">
+                                    <div class="absolute top-0 right-0 w-16 h-16 bg-rose-500/5 rounded-bl-full pointer-events-none"></div>
+                                    <span class="text-[10px] font-mono text-zinc-500 block uppercase tracking-wider">Rendimiento Ultra</span>
+                                    <span class="text-2xl font-black text-rose-500 font-mono block mt-1">240+ FPS</span>
+                                    <span class="text-[10px] text-zinc-400 block mt-1">4K Ray-Tracing Active</span>
+                                </div>
+
+                                <div class="p-5 rounded-2xl bg-[#050505] border border-zinc-800/80 hover:border-rose-500/50 transition-all duration-300 relative overflow-hidden group/item">
+                                    <div class="absolute top-0 right-0 w-16 h-16 bg-amber-500/5 rounded-bl-full pointer-events-none"></div>
+                                    <span class="text-[10px] font-mono text-zinc-500 block uppercase tracking-wider">Taller Thermal</span>
+                                    <span class="text-2xl font-black text-amber-400 font-mono block mt-1">38°C Peak</span>
+                                    <span class="text-[10px] text-zinc-400 block mt-1">Liquid Cooling AIO</span>
+                                </div>
+
+                                <div class="p-5 rounded-2xl bg-[#050505] border border-zinc-800/80 hover:border-rose-500/50 transition-all duration-300 relative overflow-hidden group/item">
+                                    <div class="absolute top-0 right-0 w-16 h-16 bg-emerald-500/5 rounded-bl-full pointer-events-none"></div>
+                                    <span class="text-[10px] font-mono text-zinc-500 block uppercase tracking-wider">Control de Calidad</span>
+                                    <span class="text-2xl font-black text-emerald-400 font-mono block mt-1">100% PASSED</span>
+                                    <span class="text-[10px] text-zinc-400 block mt-1">Stress Test 2h Done</span>
+                                </div>
+
+                                <div class="p-5 rounded-2xl bg-[#050505] border border-zinc-800/80 hover:border-rose-500/50 transition-all duration-300 relative overflow-hidden group/item">
+                                    <div class="absolute top-0 right-0 w-16 h-16 bg-rose-500/5 rounded-bl-full pointer-events-none"></div>
+                                    <span class="text-[10px] font-mono text-zinc-500 block uppercase tracking-wider">Arquitectura</span>
+                                    <span class="text-xl font-black text-white font-mono block mt-1">AM5 / LGA1700</span>
+                                    <span class="text-[10px] text-zinc-400 block mt-1">DDR5 High Speed</span>
+                                </div>
+                            </div>
+
+                            <!-- Footer Status Line -->
+                            <div class="pt-4 border-t border-zinc-800/80 flex items-center justify-between text-xs text-zinc-500 font-mono">
+                                <span>HARDWARE STATUS</span>
+                                <span class="text-rose-400 font-bold flex items-center gap-1.5">
+                                    <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+                                    ONLINE & READY
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 3. MARQUEE DE LOGOS OFICIALES              -->
+        <!-- ========================================== -->
+        <section class="py-8 bg-[#050505] border-y border-rose-950/40 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 mb-4 text-center">
+                <span class="text-[10px] uppercase font-bold tracking-[0.3em] text-zinc-500">Marcas Oficiales con las que Trabajamos</span>
+            </div>
+            
+            <div class="relative w-full overflow-hidden py-2">
+                <div class="animate-marquee flex items-center">
+                    
+                    <!-- BLOQUE A DE LOGOS OFICIALES -->
+                    <div class="flex items-center justify-around gap-10 sm:gap-16 shrink-0 px-6 sm:px-10">
+                        <img src="https://cdn.simpleicons.org/nvidia/ffffff" alt="NVIDIA" class="h-7 sm:h-8 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:drop-shadow-[0_0_14px_rgba(255,0,60,0.7)] hover:scale-110 cursor-pointer" title="NVIDIA" />
+                        <img src="https://cdn.simpleicons.org/intel/ffffff" alt="Intel" class="h-7 sm:h-8 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:drop-shadow-[0_0_14px_rgba(255,0,60,0.7)] hover:scale-110 cursor-pointer" title="Intel" />
+                        <img src="https://cdn.simpleicons.org/amd/ffffff" alt="AMD" class="h-7 sm:h-8 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:drop-shadow-[0_0_14px_rgba(255,0,60,0.7)] hover:scale-110 cursor-pointer" title="AMD" />
+                        <img src="https://cdn.simpleicons.org/asus/ffffff" alt="ASUS" class="h-7 sm:h-8 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:drop-shadow-[0_0_14px_rgba(255,0,60,0.7)] hover:scale-110 cursor-pointer" title="ASUS" />
+                        <img src="https://cdn.simpleicons.org/republicofgamers/ffffff" alt="ROG" class="h-7 sm:h-8 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:drop-shadow-[0_0_14px_rgba(255,0,60,0.7)] hover:scale-110 cursor-pointer" title="ROG (Republic of Gamers)" />
+                        <img src="https://cdn.simpleicons.org/msi/ffffff" alt="MSI" class="h-7 sm:h-8 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:drop-shadow-[0_0_14px_rgba(255,0,60,0.7)] hover:scale-110 cursor-pointer" title="MSI" />
+                        <img src="https://cdn.simpleicons.org/aorus/ffffff" alt="AORUS" class="h-7 sm:h-8 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:drop-shadow-[0_0_14px_rgba(255,0,60,0.7)] hover:scale-110 cursor-pointer" title="AORUS" />
+                        <img src="https://cdn.simpleicons.org/corsair/ffffff" alt="CORSAIR" class="h-7 sm:h-8 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:drop-shadow-[0_0_14px_rgba(255,0,60,0.7)] hover:scale-110 cursor-pointer" title="CORSAIR" />
+                        <img src="https://cdn.simpleicons.org/steelseries/ffffff" alt="SteelSeries" class="h-7 sm:h-8 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:drop-shadow-[0_0_14px_rgba(255,0,60,0.7)] hover:scale-110 cursor-pointer" title="SteelSeries" />
+                        <img src="https://cdn.simpleicons.org/kingstontechnology/ffffff" alt="KINGSTON" class="h-7 sm:h-8 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:drop-shadow-[0_0_14px_rgba(255,0,60,0.7)] hover:scale-110 cursor-pointer" title="KINGSTON" />
+                        <img src="https://cdn.simpleicons.org/razer/ffffff" alt="RAZER" class="h-7 sm:h-8 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:drop-shadow-[0_0_14px_rgba(255,0,60,0.7)] hover:scale-110 cursor-pointer" title="RAZER" />
+                        <img src="https://cdn.simpleicons.org/redragon/ffffff" alt="REDRAGON" class="h-7 sm:h-8 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:drop-shadow-[0_0_14px_rgba(255,0,60,0.7)] hover:scale-110 cursor-pointer" title="REDRAGON" />
+                    </div>
+
+                    <!-- BLOQUE B -->
+                    <div class="flex items-center justify-around gap-10 sm:gap-16 shrink-0 px-6 sm:px-10" aria-hidden="true">
+                        <img src="https://cdn.simpleicons.org/nvidia/ffffff" alt="NVIDIA" class="h-7 sm:h-8 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:drop-shadow-[0_0_14px_rgba(255,0,60,0.7)] hover:scale-110 cursor-pointer" title="NVIDIA" />
+                        <img src="https://cdn.simpleicons.org/intel/ffffff" alt="Intel" class="h-7 sm:h-8 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:drop-shadow-[0_0_14px_rgba(255,0,60,0.7)] hover:scale-110 cursor-pointer" title="Intel" />
+                        <img src="https://cdn.simpleicons.org/amd/ffffff" alt="AMD" class="h-7 sm:h-8 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:drop-shadow-[0_0_14px_rgba(255,0,60,0.7)] hover:scale-110 cursor-pointer" title="AMD" />
+                        <img src="https://cdn.simpleicons.org/asus/ffffff" alt="ASUS" class="h-7 sm:h-8 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:drop-shadow-[0_0_14px_rgba(255,0,60,0.7)] hover:scale-110 cursor-pointer" title="ASUS" />
+                        <img src="https://cdn.simpleicons.org/republicofgamers/ffffff" alt="ROG" class="h-7 sm:h-8 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:drop-shadow-[0_0_14px_rgba(255,0,60,0.7)] hover:scale-110 cursor-pointer" title="ROG (Republic of Gamers)" />
+                        <img src="https://cdn.simpleicons.org/msi/ffffff" alt="MSI" class="h-7 sm:h-8 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:drop-shadow-[0_0_14px_rgba(255,0,60,0.7)] hover:scale-110 cursor-pointer" title="MSI" />
+                        <img src="https://cdn.simpleicons.org/aorus/ffffff" alt="AORUS" class="h-7 sm:h-8 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:drop-shadow-[0_0_14px_rgba(255,0,60,0.7)] hover:scale-110 cursor-pointer" title="AORUS" />
+                        <img src="https://cdn.simpleicons.org/corsair/ffffff" alt="CORSAIR" class="h-7 sm:h-8 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:drop-shadow-[0_0_14px_rgba(255,0,60,0.7)] hover:scale-110 cursor-pointer" title="CORSAIR" />
+                        <img src="https://cdn.simpleicons.org/steelseries/ffffff" alt="SteelSeries" class="h-7 sm:h-8 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:drop-shadow-[0_0_14px_rgba(255,0,60,0.7)] hover:scale-110 cursor-pointer" title="SteelSeries" />
+                        <img src="https://cdn.simpleicons.org/kingstontechnology/ffffff" alt="KINGSTON" class="h-7 sm:h-8 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:drop-shadow-[0_0_14px_rgba(255,0,60,0.7)] hover:scale-110 cursor-pointer" title="KINGSTON" />
+                        <img src="https://cdn.simpleicons.org/razer/ffffff" alt="RAZER" class="h-7 sm:h-8 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:drop-shadow-[0_0_14px_rgba(255,0,60,0.7)] hover:scale-110 cursor-pointer" title="RAZER" />
+                        <img src="https://cdn.simpleicons.org/redragon/ffffff" alt="REDRAGON" class="h-7 sm:h-8 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:drop-shadow-[0_0_14px_rgba(255,0,60,0.7)] hover:scale-110 cursor-pointer" title="REDRAGON" />
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 4. PREVIEW OFERTAS FLASH DE LA SEMANA      -->
+        <!-- ========================================== -->
+        <section class="py-20 bg-[#050505]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 bg-[#0d0d11] p-8 rounded-3xl border border-rose-950/60 shadow-xl">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs font-bold mb-3">
+                            <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                            PROMO CRIMSON FLASH
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight font-tech-title">
+                            Ofertas Flash & Descuentos Neón
+                        </h2>
+                    </div>
+
+                    <div class="flex items-center gap-3 bg-[#050505] px-5 py-3 rounded-2xl border border-zinc-800">
+                        <span class="text-xs text-zinc-400 font-bold uppercase tracking-wider">Finaliza en:</span>
+                        <div class="flex items-center gap-1.5 text-rose-500 font-mono font-bold text-lg">
+                            <span id="timer-hours">14</span>:
+                            <span id="timer-minutes">32</span>:
+                            <span id="timer-seconds">45</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="flash-deals-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Insertado por app.js -->
+                </div>
+
+                <div class="mt-16 text-center">
+                    <a href="catalogo.html" class="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-rose-600 hover:bg-rose-500 text-white font-extrabold text-base shadow-xl shadow-rose-600/30 hover:-translate-y-1 transition-all glow-crimson">
+                        <span>VER TODO EL CATÁLOGO COMPLETO</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 5. BLOQUE DE SERVICIOS ESPECIALIZADOS     -->
+        <!-- ========================================== -->
+        <section id="servicios" class="py-20 bg-[#050505] border-t border-rose-950/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-black text-white font-tech-title">Servicio Técnico Especializado</h2>
+                    <p class="text-zinc-400 text-base mt-3">Garantizamos el máximo rendimiento de tu inversión con procesos de ensamble rigurosos.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- TARJETA 1 -->
+                    <div class="bg-[#0d0d11] p-8 rounded-3xl border border-zinc-800 hover:border-rose-500/40 transition-all space-y-4">
+                        <div class="w-12 h-12 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-400 flex items-center justify-center shadow-lg shadow-rose-500/10">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Asesoramiento de Compatibilidad</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed">Optimizamos tu presupuesto seleccionando componentes sin cuellos de botella entre CPU, GPU y memoria RAM.</p>
+                    </div>
+
+                    <!-- TARJETA 2 -->
+                    <div class="bg-[#0d0d11] p-8 rounded-3xl border border-zinc-800 hover:border-rose-500/40 transition-all space-y-4">
+                        <div class="w-12 h-12 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-400 flex items-center justify-center shadow-lg shadow-red-500/10">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Ensamble & Cable Management</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed">Montaje quirúrgico, ruteo de cables invisible para flujo de aire máximo y aplicación de pasta térmica Arctic MX-4.</p>
+                    </div>
+
+                    <!-- TARJETA 3 -->
+                    <div class="bg-[#0d0d11] p-8 rounded-3xl border border-zinc-800 hover:border-rose-500/40 transition-all space-y-4">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center shadow-lg shadow-amber-500/10">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Stress Test & BIOS Flash</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed">Actualización a la última versión de BIOS y prueba de estrés por 2h en FurMark y Cinebench antes de la entrega.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 6. CONTACTO (BOTÓN "ENVIAR CONSULTA")      -->
+        <!-- ========================================== -->
+        <section id="contacto" class="py-20 bg-[#050505]">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-[#0d0d11] rounded-3xl p-8 sm:p-12 border border-zinc-800 shadow-2xl relative">
+                    <div class="text-center max-w-xl mx-auto mb-10">
+                        <h2 class="text-3xl font-black text-white font-tech-title">Atención Personalizada</h2>
+                        <p class="text-zinc-400 text-sm mt-2">¿Tienes alguna duda sobre un producto o deseas una cotización a medida? Escríbenos directamente.</p>
+                    </div>
+
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="contact-name" class="block text-xs font-bold text-zinc-300 uppercase tracking-wider mb-2">Nombre Completo *</label>
+                                <input type="text" id="contact-name" required placeholder="Ej: Lucas González" class="w-full px-4 py-3.5 rounded-xl bg-[#050505] border border-zinc-800 text-white placeholder-zinc-600 focus:outline-none focus:border-rose-500 text-sm">
+                            </div>
+                            <div>
+                                <label for="contact-email" class="block text-xs font-bold text-zinc-300 uppercase tracking-wider mb-2">Correo Electrónico *</label>
+                                <input type="email" id="contact-email" required placeholder="ejemplo@correo.com" class="w-full px-4 py-3.5 rounded-xl bg-[#050505] border border-zinc-800 text-white placeholder-zinc-600 focus:outline-none focus:border-rose-500 text-sm">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="contact-message" class="block text-xs font-bold text-zinc-300 uppercase tracking-wider mb-2">Consulta o Especificaciones de PC *</label>
+                            <textarea id="contact-message" rows="4" required placeholder="Indica los componentes que te gustaría cotizar..." class="w-full px-4 py-3.5 rounded-xl bg-[#050505] border border-zinc-800 text-white placeholder-zinc-600 focus:outline-none focus:border-rose-500 text-sm"></textarea>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                            <button type="submit" class="w-full sm:w-1/2 py-4 px-6 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-black text-sm transition-all shadow-lg shadow-rose-600/30 active:scale-95 glow-crimson">
+                                Enviar Consulta
+                            </button>
+                            <button type="button" id="whatsapp-direct-btn" class="w-full sm:w-1/2 py-4 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-all shadow-lg flex items-center justify-center gap-2 active:scale-95">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.012 2c-5.508 0-9.989 4.481-9.989 9.989 0 1.862.511 3.606 1.407 5.109l-1.43 5.225 5.372-1.409c1.455.823 3.13 1.294 4.908 1.294 5.508 0 9.989-4.481 9.989-9.989 0-5.508-4.481-9.989-9.989-9.989zm5.789 14.188c-.247.697-1.428 1.34-1.996 1.396-.51.05-1.168.082-3.376-.832-2.825-1.17-4.636-4.043-4.776-4.234-.139-.19-1.144-1.523-1.144-2.906 0-1.383.722-2.062.98-2.344.257-.282.564-.352.753-.352.189 0 .378.002.54.009.172.008.404-.065.632.482.235.565.801 1.956.871 2.098.07.142.117.31.023.498-.094.188-.141.305-.282.47-.142.165-.298.369-.425.496-.142.142-.29.297-.125.58.165.283.737 1.213 1.581 1.966 1.085.966 2.001 1.266 2.284 1.407.283.141.447.118.611-.07.165-.188.706-.823.894-1.106.188-.282.376-.235.635-.141.259.094 1.646.776 1.928.917.282.141.47.212.541.33.07.117.07.682-.177 1.379z"/></svg>
+                                Hablar por WhatsApp
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#050505] border-t border-zinc-800 text-zinc-400 text-sm py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="space-y-3">
+                    <span class="text-xl font-black text-white font-serif-title">JMSHOP</span>
+                    <p class="text-zinc-500 text-xs leading-relaxed">E-commerce de tecnología gamer de alta fidelidad, hardware y ensamble técnico garantizado.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-3 text-xs uppercase tracking-wider">Secciones</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="index.html" class="hover:text-rose-400 transition-colors">Inicio</a></li>
+                        <li><a href="catalogo.html" class="hover:text-rose-400 transition-colors">Catálogo Completo</a></li>
+                        <li><a href="builder.html" class="hover:text-rose-400 transition-colors">Arma tu PC</a></li>
+                        <li><a href="#servicios" class="hover:text-rose-400 transition-colors">Servicios Taller</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-3 text-xs uppercase tracking-wider">Categorías</h4>
+                    <ul class="space-y-2 text-xs text-zinc-500">
+                        <li>GPUs & Hardware</li>
+                        <li>Notebooks Gamer</li>
+                        <li>Licencias Digitales</li>
+                        <li>Armado de PC</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-3 text-xs uppercase tracking-wider">Atención</h4>
+                    <p class="text-xs text-zinc-500">Lun a Vie: 09:00 - 18:00 hs<br>Sábados: 09:00 - 13:00 hs</p>
+                </div>
+            </div>
+            <div class="border-t border-zinc-900 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-600">
+                <p>&copy; 2026 JMSHOP Cyberpunk Tech. Todos los derechos reservados.</p>
+                <p>Obsidian Cyberpunk Design System.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- DRAWER LATERAL CARRITO -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-[#050505]/80 backdrop-blur-sm" onclick="JMSHOP_Cart.closeDrawer()"></div>
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-[#050505] border-l border-zinc-800 flex flex-col animate-slide-left shadow-2xl">
+                <div class="p-6 border-b border-zinc-800 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                        <h3 class="text-lg font-bold text-white font-serif-title">Tu Carrito de Compras</h3>
+                    </div>
+                    <button id="cart-drawer-close" class="p-2 text-zinc-400 hover:text-white" aria-label="Cerrar carrito">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+
+                <div id="cart-drawer-items" class="flex-grow overflow-y-auto p-6 space-y-4"></div>
+
+                <div id="cart-drawer-empty" class="hidden flex-grow flex flex-col items-center justify-center p-6 text-center">
+                    <svg class="w-16 h-16 text-zinc-700 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                    <p class="text-zinc-400 font-bold text-sm">Tu carrito está vacío</p>
+                    <p class="text-zinc-600 text-xs mt-1">Explora nuestro catálogo para agregar componentes.</p>
+                </div>
+
+                <div id="cart-drawer-footer" class="p-6 border-t border-zinc-800 bg-[#0d0d11]/90 space-y-4">
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-zinc-400 font-semibold">Total a Pagar:</span>
+                        <span id="cart-subtotal-price" class="text-2xl font-black text-rose-500 font-mono">$0</span>
+                    </div>
+
+                    <div class="space-y-2">
+                        <button id="cart-checkout-btn" class="w-full py-3.5 px-4 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-black text-sm shadow-lg shadow-rose-600/20 transition-all flex items-center justify-center gap-2">
+                            <span>PROCEDER AL PAGO</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        </button>
+                        <button id="cart-whatsapp-btn" class="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all flex items-center justify-center gap-2">
+                            Pedir por WhatsApp
+                        </button>
+                        <button id="cart-clear-btn" class="w-full text-center text-xs text-zinc-500 hover:text-rose-400 py-1">Vaciar Carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL CHECKOUT PASARELA DE PAGO -->
+    <div id="checkout-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-[#050505]/85 backdrop-blur-md" role="dialog" aria-modal="true">
+        <div class="bg-[#0d0d11] border border-zinc-800 rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl relative animate-slide-up">
+            <button id="checkout-close-btn" class="absolute top-4 right-4 p-2 text-zinc-400 hover:text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+
+            <div id="checkout-form-view" class="p-6 sm:p-8 space-y-6">
+                <div>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-rose-500 block">Pasarela de Pago Segura</span>
+                    <h3 class="text-2xl font-black text-white font-serif-title mt-1">Finalizar Compra</h3>
+                </div>
+
+                <div class="bg-[#050505] p-4 rounded-2xl border border-zinc-800 space-y-2">
+                    <span class="text-xs font-bold text-zinc-400 block uppercase border-b border-zinc-800/80 pb-2">Resumen de tu Orden</span>
+                    <div id="checkout-order-summary" class="max-h-32 overflow-y-auto space-y-1"></div>
+                    <div class="flex justify-between items-center pt-2 border-t border-zinc-800 font-bold text-sm">
+                        <span class="text-white">Total:</span>
+                        <span id="checkout-total-price" class="text-rose-500 text-lg font-mono font-bold"></span>
+                    </div>
+                </div>
+
+                <form id="checkout-payment-form" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-zinc-300 uppercase mb-2">Método de Pago</label>
+                        <select class="w-full px-4 py-3 rounded-xl bg-[#050505] border border-zinc-800 text-white text-sm focus:border-rose-500">
+                            <option>💳 Tarjeta de Crédito / Débito (Visa / Mastercard)</option>
+                            <option>📱 MercadoPago (QR / Saldo)</option>
+                            <option>🏦 Transferencia Bancaria (CBU / Alias)</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-3">
+                        <input type="text" required placeholder="Número de Tarjeta (16 dígitos)" class="w-full px-4 py-3 rounded-xl bg-[#050505] border border-zinc-800 text-white text-sm placeholder-zinc-600 focus:border-rose-500">
+                        <div class="grid grid-cols-2 gap-3">
+                            <input type="text" required placeholder="MM/AA" class="w-full px-4 py-3 rounded-xl bg-[#050505] border border-zinc-800 text-white text-sm placeholder-zinc-600 focus:border-rose-500">
+                            <input type="text" required placeholder="CVC (3 dígitos)" class="w-full px-4 py-3 rounded-xl bg-[#050505] border border-zinc-800 text-white text-sm placeholder-zinc-600 focus:border-rose-500">
+                        </div>
+                        <input type="text" required placeholder="Nombre del Titular" class="w-full px-4 py-3 rounded-xl bg-[#050505] border border-zinc-800 text-white text-sm placeholder-zinc-600 focus:border-rose-500">
+                    </div>
+
+                    <button type="submit" class="w-full py-4 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-black text-sm transition-all shadow-lg shadow-rose-600/20">
+                        CONFIRMAR Y PAGAR AHORA
+                    </button>
+                </form>
+            </div>
+
+            <div id="checkout-success-view" class="hidden p-8 text-center space-y-6">
+                <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center mx-auto">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-black text-white font-serif-title">¡Pago Procesado con Éxito!</h3>
+                    <p class="text-zinc-400 text-xs mt-2">Número de Orden: <span id="checkout-order-number" class="text-rose-400 font-mono font-bold"></span></p>
+                </div>
+                <button id="checkout-finish-btn" class="w-full py-3.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-sm">
+                    Volver a la Tienda
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/cursor.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

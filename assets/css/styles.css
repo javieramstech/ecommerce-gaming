@@ -1,0 +1,286 @@
+/* JMSHOP - Sistema de Diseño Crimson Techno-Minimalist & Modo Claro Suave */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap');
+
+:root {
+    --bg-obsidian: #050505;
+    --bg-surface: #0d0d10;
+    --bg-surface-elevated: #15151a;
+    --accent-crimson: #ff003c;
+    --accent-crimson-glow: rgba(255, 0, 60, 0.45);
+    --accent-rose: #f43f5e;
+    --accent-amber: #f59e0b;
+}
+
+/* Base Body */
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-obsidian);
+    color: #f4f4f5;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, .font-serif-title, .font-tech-title {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Transiciones suaves globales */
+html {
+    scroll-behavior: smooth;
+}
+
+body, nav, section, article, footer, div, span, input, select, textarea, button {
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Background Techno Cyber Grid */
+.bg-cyber-grid {
+    background-size: 40px 40px;
+    background-image: 
+        linear-gradient(to right, rgba(255, 0, 60, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 0, 60, 0.05) 1px, transparent 1px);
+}
+
+/* Laser Scan Animation for Hero HUD */
+@keyframes laserScan {
+    0% { top: 0%; opacity: 0; }
+    15% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+.animate-laser-scan {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ff003c, #f43f5e, transparent);
+    box-shadow: 0 0 15px #ff003c, 0 0 30px #ff003c;
+    animation: laserScan 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Neon Crimson Glow Effects */
+.glow-crimson {
+    box-shadow: 0 0 25px rgba(255, 0, 60, 0.3);
+}
+
+.glow-crimson:hover {
+    box-shadow: 0 0 40px rgba(255, 0, 60, 0.55);
+}
+
+.glow-text-crimson {
+    text-shadow: 0 0 20px rgba(255, 0, 60, 0.6);
+}
+
+/* CUSTOM CURSOR GLOW (SUTIL Y ELEGANTE) */
+#cyber-cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 320px;
+    height: 320px;
+    margin-top: -160px;
+    margin-left: -160px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 0, 60, 0.18) 0%, rgba(255, 0, 60, 0.05) 45%, transparent 70%);
+    pointer-events: none;
+    z-index: 9999;
+    transition: width 0.3s ease, height 0.3s ease, margin 0.3s ease, background 0.3s ease;
+    will-change: transform;
+}
+
+#cyber-cursor-glow.active {
+    width: 480px;
+    height: 480px;
+    margin-top: -240px;
+    margin-left: -240px;
+    background: radial-gradient(circle, rgba(255, 0, 60, 0.28) 0%, rgba(255, 0, 60, 0.08) 50%, transparent 75%);
+}
+
+@media (max-width: 768px) {
+    #cyber-cursor-glow {
+        display: none !important;
+    }
+}
+
+/* HERO ANIMATED BACKGROUND ORBS */
+@keyframes heroOrbPulse {
+    0%, 100% { transform: scale(1) translate(0, 0); opacity: 0.25; }
+    50% { transform: scale(1.15) translate(15px, -15px); opacity: 0.45; }
+}
+
+.hero-orb-1 {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    top: -100px;
+    right: -100px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 0, 60, 0.22) 0%, rgba(255, 0, 60, 0.02) 60%, transparent 80%);
+    filter: blur(60px);
+    animation: heroOrbPulse 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.hero-orb-2 {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    bottom: -50px;
+    left: -50px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(225, 29, 72, 0.15) 0%, transparent 70%);
+    filter: blur(80px);
+    animation: heroOrbPulse 12s ease-in-out infinite reverse;
+    pointer-events: none;
+}
+
+/* HERO 3D HARDWARE CARD */
+#hero-hardware-card {
+    transition: transform 0.15s ease-out;
+    transform-style: preserve-3d;
+}
+
+/* MODO CLARO SUAVE (ESTÉTICO Y NO ENCANDILANTE) */
+html:not(.dark) body {
+    background-color: #f8fafc !important;
+    color: #0f172a !important;
+}
+
+html:not(.dark) header {
+    background-color: rgba(248, 250, 252, 0.9) !important;
+    border-color: #e2e8f0 !important;
+}
+
+html:not(.dark) nav a {
+    color: #334155 !important;
+}
+
+html:not(.dark) nav a:hover, html:not(.dark) nav a.text-rose-500, html:not(.dark) nav a.text-rose-400 {
+    color: #e11d48 !important;
+    border-color: #e11d48 !important;
+}
+
+html:not(.dark) .bg-slate-900, 
+html:not(.dark) .bg-slate-950,
+html:not(.dark) .bg-\[\#09090b\],
+html:not(.dark) .bg-\[\#050505\] {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    color: #0f172a !important;
+}
+
+html:not(.dark) .bg-slate-800,
+html:not(.dark) .bg-slate-900\/90,
+html:not(.dark) .bg-slate-900\/80,
+html:not(.dark) .bg-slate-900\/60 {
+    background-color: #f1f5f9 !important;
+    border-color: #e2e8f0 !important;
+    color: #0f172a !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+html:not(.dark) .text-white,
+html:not(.dark) .text-slate-100,
+html:not(.dark) .text-slate-200,
+html:not(.dark) .text-slate-300 {
+    color: #0f172a !important;
+}
+
+html:not(.dark) .text-slate-400,
+html:not(.dark) .text-slate-500 {
+    color: #64748b !important;
+}
+
+html:not(.dark) .text-rose-400,
+html:not(.dark) .text-rose-500 {
+    color: #e11d48 !important;
+}
+
+html:not(.dark) .bg-rose-500,
+html:not(.dark) .bg-rose-600 {
+    background-color: #e11d48 !important;
+    color: #ffffff !important;
+}
+
+html:not(.dark) .border-slate-800,
+html:not(.dark) .border-slate-700 {
+    border-color: #e2e8f0 !important;
+}
+
+html:not(.dark) input,
+html:not(.dark) select,
+html:not(.dark) textarea {
+    background-color: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    color: #0f172a !important;
+}
+
+html:not(.dark) input::placeholder,
+html:not(.dark) textarea::placeholder {
+    color: #94a3b8 !important;
+}
+
+/* MARQUEE INFINITO 100% FLUIDO Y SIN SALTOS */
+@keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 35s linear infinite;
+    will-change: transform;
+}
+
+.animate-marquee:hover {
+    animation-play-state: paused;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.97); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideLeft {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-left {
+    animation: slideLeft 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-up {
+    animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scrollbar estética estilo cyber crimson */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1f1f23;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ff003c;
+}
