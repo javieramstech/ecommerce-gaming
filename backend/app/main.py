@@ -62,9 +62,34 @@ async def universal_cors_middleware(request: Request, call_next):
     return response
 
 
-@app.get("/", tags=["Health Check"])
-def root_status():
-    """Endpoint de estado para verificación de salud de la API."""
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
+# Check if assets directory exists (for static files)
+assets_path = os.path.join(_root_dir, "assets")
+if os.path.isdir(assets_path):
+    app.mount("/assets", StaticFiles(directory=assets_path), name="assets")
+
+@app.get("/", tags=["Frontend"])
+def serve_index():
+    """Sirve el archivo index.html en la ruta raiz."""
+    index_path = os.path.join(_root_dir, "index.html")
+    if os.path.isfile(index_path):
+        return FileResponse(index_path)
+    return {"status": "online", "message": "JMSHOP API (Frontend not found)"}
+
+@app.get("/{filename}.html", tags=["Frontend"])
+def serve_html(filename: str):
+    """Sirve archivos HTML de la raiz."""
+    path = os.path.join(_root_dir, f"{filename}.html")
+    if os.path.isfile(path):
+        return FileResponse(path)
+    from fastapi import HTTPException
+    raise HTTPException(status_code=404, detail="File not found")
+
+@app.get("/health", tags=["Health Check"])
+def health_check():
+    """Endpoint de estado para verificacion de salud de la API."""
     return {
         "status": "online",
         "project": settings.PROJECT_NAME,
