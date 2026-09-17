@@ -1,4 +1,9 @@
 {
+  "functions": {
+    "api/index.py": {
+      "includeFiles": "backend/jmshop.db"
+    }
+  },
   "rewrites": [
     {
       "source": "/api/(.*)",
